@@ -9,7 +9,7 @@ import Foundation
 
 class FollowersApi {
     
-    fileprivate let url = "https://api.github.com/users/kevinhomorales/followers"
+    fileprivate var url: String!
     fileprivate var followersArray = [Followers]()
     
     static let shared: FollowersApi = {
@@ -18,10 +18,29 @@ class FollowersApi {
     
     internal func getFollowersByUser(user: User, completion: @escaping([Followers]) -> ()) {
         let session = URLSession.shared
+        url = "https://api.github.com/users/\(user.username!)/followers"
         let urlRequest = NSMutableURLRequest(url: URL(string: url)!)
-        // EMPEZAR EL MECANISMO DE LA PROPIA LLAMADA AL SERVIDOR
         let task = session.dataTask(with: urlRequest as URLRequest) { [self] (data, response, error) -> Void in
-            // EMPEZARÍA LA IMPLEMENTACIÓN DE LA CLOSURE
+            let httpResponse = response as! HTTPURLResponse
+            let statusCode = httpResponse.statusCode
+            if statusCode == 200 {
+                do {
+                    let decoder = JSONDecoder()
+                    followersArray = try decoder.decode([Followers].self, from: data!)
+                } catch {
+                    print("Not parse object -> \(error.localizedDescription)")
+                }
+                completion(followersArray)
+            }
+        }
+        task.resume()
+    }
+    
+    internal func getFollowingByUser(user: User, completion: @escaping([Followers]) -> ()) {
+        let session = URLSession.shared
+        url = "https://api.github.com/users/\(user.username!)/following"
+        let urlRequest = NSMutableURLRequest(url: URL(string: url)!)
+        let task = session.dataTask(with: urlRequest as URLRequest) { [self] (data, response, error) -> Void in
             let httpResponse = response as! HTTPURLResponse
             let statusCode = httpResponse.statusCode
             if statusCode == 200 {

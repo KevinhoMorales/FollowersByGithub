@@ -11,8 +11,9 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var followersTableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
-    @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var followersButton: UIButton!
     @IBOutlet weak var backgroundStackView: UIStackView!
+    @IBOutlet weak var followingButton: UIButton!
     @IBOutlet weak var refreshButton: UIButton!
     
     fileprivate let viewModel = HomeViewModel()
@@ -25,7 +26,7 @@ class HomeViewController: UIViewController {
     
     fileprivate func setUpView() {
         title = viewModel.setUpTitleView()
-        viewModel.setUpActions(viewcontroller: self, refreshButton: refreshButton, searchButton: searchButton, searchTextField: searchTextField) { [weak self] followers in
+        viewModel.setUpActions(viewcontroller: self, followingButton: followingButton, followersButton: followersButton, searchTextField: searchTextField) { [weak self] followers in
             DispatchQueue.main.async {
                 self?.viewModel.followersArray = followers
                 self?.backgroundStackView.isHidden = true
@@ -33,6 +34,15 @@ class HomeViewController: UIViewController {
                 self?.followersTableView.reloadData()
             }
         }
+        
+        refreshButton.rx.tap
+            .bind { [weak self] in
+                self?.searchTextField.text = ""
+                self?.backgroundStackView.isHidden = false
+                self?.followersTableView.isHidden = true
+                self?.viewModel.followersArray.removeAll()
+            }.disposed(by: viewModel.disposeBag)
+        
         setUpCell()
     }
     

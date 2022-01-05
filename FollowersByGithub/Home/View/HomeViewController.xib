@@ -11,9 +11,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="FollowersByGithub" customModuleProvider="target">
             <connections>
                 <outlet property="backgroundStackView" destination="frV-Yd-aEg" id="4ab-To-HyU"/>
+                <outlet property="followersButton" destination="mKS-AB-so2" id="Np5-0a-DZK"/>
                 <outlet property="followersTableView" destination="uFE-kY-gSo" id="WaQ-7w-LXC"/>
-                <outlet property="refreshButton" destination="6G3-Fc-5eI" id="oDj-Cl-iWn"/>
-                <outlet property="searchButton" destination="mKS-AB-so2" id="Np5-0a-DZK"/>
+                <outlet property="followingButton" destination="6G3-Fc-5eI" id="oDj-Cl-iWn"/>
+                <outlet property="refreshButton" destination="LV5-eI-jCo" id="G0d-uM-VXg"/>
                 <outlet property="searchTextField" destination="nAD-JV-ttA" id="kjQ-Y7-XK8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -32,7 +33,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nAD-JV-ttA">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Insert username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nAD-JV-ttA">
                     <rect key="frame" x="20" y="140" width="374" height="34"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="34" id="xX3-qR-fsL"/>
@@ -40,32 +41,42 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ahf-Jg-t6p">
-                    <rect key="frame" x="20" y="787" width="374" height="55"/>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ahf-Jg-t6p">
+                    <rect key="frame" x="20" y="724" width="374" height="118"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6G3-Fc-5eI">
-                            <rect key="frame" x="0.0" y="0.0" width="177" height="55"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="zsW-4p-2cK">
+                            <rect key="frame" x="0.0" y="0.0" width="374" height="55"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6G3-Fc-5eI">
+                                    <rect key="frame" x="0.0" y="0.0" width="177" height="55"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="55" id="SLg-N5-mjf"/>
+                                    </constraints>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="tinted" title="Following"/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mKS-AB-so2">
+                                    <rect key="frame" x="197" y="0.0" width="177" height="55"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="55" id="YEO-7k-bJu"/>
+                                    </constraints>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="tinted" title="Followers"/>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LV5-eI-jCo">
+                            <rect key="frame" x="0.0" y="63" width="374" height="55"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="55" id="SLg-N5-mjf"/>
+                                <constraint firstAttribute="height" constant="55" id="C4w-3g-Ine"/>
                             </constraints>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="tinted" title="Following"/>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mKS-AB-so2">
-                            <rect key="frame" x="197" y="0.0" width="177" height="55"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="55" id="YEO-7k-bJu"/>
-                            </constraints>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="tinted" title="Followers"/>
+                            <buttonConfiguration key="configuration" style="tinted" title="Refresh"/>
                         </button>
                     </subviews>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="55" id="oCM-cd-alg"/>
-                    </constraints>
                 </stackView>
                 <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="uFE-kY-gSo">
-                    <rect key="frame" x="20" y="182" width="374" height="597"/>
+                    <rect key="frame" x="20" y="182" width="374" height="534"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="0Ls-Em-wqW"/>
@@ -73,10 +84,10 @@
                     </connections>
                 </tableView>
                 <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="frV-Yd-aEg">
-                    <rect key="frame" x="20" y="182" width="374" height="545"/>
+                    <rect key="frame" x="20" y="182" width="374" height="482"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="2ln-ek-4zr">
-                            <rect key="frame" x="37" y="0.0" width="300" height="545"/>
+                            <rect key="frame" x="37" y="0.0" width="300" height="482"/>
                         </imageView>
                     </subviews>
                 </stackView>

@@ -13,15 +13,15 @@ import UIKit
 
 class HomeViewModel {
     
-    fileprivate let disposeBag = DisposeBag()
+    let disposeBag = DisposeBag()
     var followersArray = [Followers]()
     
     func setUpTitleView() -> String {
-        return "Followers"
+        return "Github User"
     }
     
-    func setUpActions(viewcontroller: UIViewController, refreshButton: UIButton, searchButton: UIButton, searchTextField: UITextField, completion: @escaping([Followers]) -> ()) {
-        searchButton.rx.tap
+    func setUpActions(viewcontroller: UIViewController, followingButton: UIButton, followersButton: UIButton, searchTextField: UITextField, completion: @escaping([Followers]) -> ()) {
+        followersButton.rx.tap
             .bind { [weak self] in
                 guard let username = searchTextField.text else {return}
                 let user = User(username: username)
@@ -29,10 +29,10 @@ class HomeViewModel {
                     self?.setAlert(viewcontroller: viewcontroller)
                     return
                 }
-                self?.getFollowers(user: user, refreshButton: refreshButton, completion: completion)
+                self?.getFollowers(user: user, completion: completion)
             }.disposed(by: disposeBag)
         
-        refreshButton.rx.tap
+        followingButton.rx.tap
             .bind { [weak self] in
                 guard let username = searchTextField.text else {return}
                 let user = User(username: username)
@@ -40,7 +40,7 @@ class HomeViewModel {
                     self?.setAlert(viewcontroller: viewcontroller)
                     return
                 }
-                self?.getFollowing(user: user, refreshButton: refreshButton, completion: completion)
+                self?.getFollowing(user: user, completion: completion)
             }.disposed(by: disposeBag)
     }
     
@@ -50,13 +50,13 @@ class HomeViewModel {
         viewcontroller.present(alert, animated: true, completion: nil)
     }
     
-    fileprivate func getFollowers(user: User, refreshButton: UIButton, completion: @escaping([Followers]) -> ()) {
+    fileprivate func getFollowers(user: User, completion: @escaping([Followers]) -> ()) {
         FollowersApi.shared.getFollowersByUser(user: user) { followers in
             completion(followers)
         }
     }
     
-    fileprivate func getFollowing(user: User, refreshButton: UIButton, completion: @escaping([Followers]) -> ()) {
+    fileprivate func getFollowing(user: User, completion: @escaping([Followers]) -> ()) {
         FollowersApi.shared.getFollowingByUser(user: user) { followers in
             completion(followers)
         }

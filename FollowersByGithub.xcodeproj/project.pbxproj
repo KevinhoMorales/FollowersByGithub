@@ -10,6 +10,7 @@
 		2A5FB613278628AA00D03021 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 2A5FB612278628AA00D03021 /* RxCocoa */; };
 		2A5FB615278628AA00D03021 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2A5FB614278628AA00D03021 /* RxSwift */; };
 		2A5FB61827862A6400D03021 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 2A5FB61727862A6400D03021 /* RxDataSources */; };
+		2A5FB61A2786332D00D03021 /* LoadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5FB6192786332D00D03021 /* LoadImage.swift */; };
 		2ABA39F327860CD700BDB82A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABA39F227860CD700BDB82A /* AppDelegate.swift */; };
 		2ABA39FC27860CD900BDB82A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2ABA39FB27860CD900BDB82A /* Assets.xcassets */; };
 		2ABA39FF27860CD900BDB82A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2ABA39FD27860CD900BDB82A /* LaunchScreen.storyboard */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A5FB6192786332D00D03021 /* LoadImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadImage.swift; sourceTree = "<group>"; };
 		2ABA39EF27860CD700BDB82A /* FollowersByGithub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FollowersByGithub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2ABA39F227860CD700BDB82A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2ABA39FB27860CD900BDB82A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				2ABA39F227860CD700BDB82A /* AppDelegate.swift */,
+				2A5FB6192786332D00D03021 /* LoadImage.swift */,
 				2ABA3A0F2786106400BDB82A /* NetworkManager */,
 				2ABA3A0627860D0B00BDB82A /* Home */,
 				2ABA39FB27860CD900BDB82A /* Assets.xcassets */,
@@ -238,6 +241,7 @@
 				2ABA39F327860CD700BDB82A /* AppDelegate.swift in Sources */,
 				2ABA3A0927860D1B00BDB82A /* HomeViewController.swift in Sources */,
 				2ABA3A192786186600BDB82A /* User.swift in Sources */,
+				2A5FB61A2786332D00D03021 /* LoadImage.swift in Sources */,
 				2ABA3A0E27860D4D00BDB82A /* HomeViewModel.swift in Sources */,
 				2ABA3A1D27861E4C00BDB82A /* FollowersTableViewCell.swift in Sources */,
 			);

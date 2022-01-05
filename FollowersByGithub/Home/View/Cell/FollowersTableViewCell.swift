@@ -11,6 +11,7 @@ class FollowersTableViewCell: UITableViewCell {
 
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var idLabel: UILabel!
+    @IBOutlet weak var userImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -28,6 +29,7 @@ class FollowersTableViewCell: UITableViewCell {
     func setUpCell(follower: Followers) {
         usernameLabel.text = follower.login
         idLabel.text = "\(follower.id)"
+        userImageView.loadImageUsingCacheWithURLString(follower.avatar_url, placeHolder: nil)
     }
     
 }

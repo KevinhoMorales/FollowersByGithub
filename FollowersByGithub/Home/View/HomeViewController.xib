@@ -10,6 +10,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="FollowersByGithub" customModuleProvider="target">
             <connections>
+                <outlet property="followersTableView" destination="uFE-kY-gSo" id="WaQ-7w-LXC"/>
+                <outlet property="refreshButton" destination="6G3-Fc-5eI" id="oDj-Cl-iWn"/>
+                <outlet property="searchButton" destination="mKS-AB-so2" id="Np5-0a-DZK"/>
+                <outlet property="searchTextField" destination="nAD-JV-ttA" id="kjQ-Y7-XK8"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -27,7 +31,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nAD-JV-ttA">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="KevinhoMorales" borderStyle="roundedRect" placeholder="User" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nAD-JV-ttA">
                     <rect key="frame" x="20" y="132" width="374" height="34"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="34" id="xX3-qR-fsL"/>
@@ -35,27 +39,55 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6G3-Fc-5eI">
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ahf-Jg-t6p">
                     <rect key="frame" x="20" y="787" width="374" height="55"/>
+                    <subviews>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6G3-Fc-5eI">
+                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="55"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="55" id="SLg-N5-mjf"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="tinted" title="Refresh"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mKS-AB-so2">
+                            <rect key="frame" x="0.0" y="0.0" width="374" height="55"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="55" id="YEO-7k-bJu"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="tinted" title="Search"/>
+                        </button>
+                    </subviews>
                     <constraints>
-                        <constraint firstAttribute="height" constant="55" id="SLg-N5-mjf"/>
+                        <constraint firstAttribute="height" constant="55" id="oCM-cd-alg"/>
                     </constraints>
-                    <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="tinted" title="Search"/>
-                </button>
+                </stackView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="uFE-kY-gSo">
+                    <rect key="frame" x="20" y="174" width="374" height="605"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="0Ls-Em-wqW"/>
+                        <outlet property="delegate" destination="-1" id="llO-63-mhd"/>
+                    </connections>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="6G3-Fc-5eI" secondAttribute="bottom" constant="20" id="3rW-xa-EZJ"/>
+                <constraint firstItem="uFE-kY-gSo" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="4F8-Ug-2st"/>
                 <constraint firstItem="nAD-JV-ttA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="5mN-9b-I2e"/>
                 <constraint firstItem="Jq2-ju-ErX" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="6bu-Ip-1Oz"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6G3-Fc-5eI" secondAttribute="trailing" constant="20" id="LxL-d6-pL4"/>
+                <constraint firstItem="ahf-Jg-t6p" firstAttribute="top" secondItem="uFE-kY-gSo" secondAttribute="bottom" constant="8" symbolic="YES" id="7qo-6k-s2e"/>
+                <constraint firstItem="ahf-Jg-t6p" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="9Ku-aO-xbE"/>
+                <constraint firstItem="uFE-kY-gSo" firstAttribute="top" secondItem="nAD-JV-ttA" secondAttribute="bottom" constant="8" symbolic="YES" id="D69-eP-T0z"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ahf-Jg-t6p" secondAttribute="trailing" constant="20" id="EsS-Ow-Yjg"/>
                 <constraint firstItem="Jq2-ju-ErX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="kRE-hf-2xg"/>
-                <constraint firstItem="6G3-Fc-5eI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="kl2-55-R8B"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="nAD-JV-ttA" secondAttribute="trailing" constant="20" id="mR8-xD-zgf"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="uFE-kY-gSo" secondAttribute="trailing" constant="20" id="rhQ-rd-45R"/>
                 <constraint firstItem="nAD-JV-ttA" firstAttribute="top" secondItem="Jq2-ju-ErX" secondAttribute="bottom" constant="8" symbolic="YES" id="sJf-bD-scg"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Jq2-ju-ErX" secondAttribute="trailing" constant="20" id="yT1-25-4pq"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ahf-Jg-t6p" secondAttribute="bottom" constant="20" id="zfN-Ih-nxi"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="122.54464285714285"/>
         </view>
